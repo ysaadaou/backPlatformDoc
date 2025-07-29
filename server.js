@@ -11,11 +11,13 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const corsOptions = {
-  origin: "https://keepcalmanddonotpanic.netlify.app", // or use a regex or array for multiple origins
-  methods: ["GET", "POST", "OPTIONS"],
-  credentials: true, // if you're using cookies or auth headers
-};
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+);
 //app.use(cors({
 //  origin: "*", // Allow all origins
 //  credentials: false // Cannot use credentials with '*'
