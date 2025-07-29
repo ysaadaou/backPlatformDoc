@@ -13,12 +13,13 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 app.use(
   cors({
-    origin: "*",
+    origin: "*", // Or set to your frontend domain in production
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: false, // Cannot use credentials with '*'
+    credentials: false,
   }),
 );
+app.options("*", cors());
 //app.use(cors({
 //  origin: "*", // Allow all origins
 //  credentials: false // Cannot use credentials with '*'
