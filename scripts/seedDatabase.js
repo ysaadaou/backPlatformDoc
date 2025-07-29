@@ -30,10 +30,10 @@ const seedData = async () => {
         nom: "Saadaoui",
         prenom: "Yahya",
         email: "yahya.saadaoui@university.ma",
-        cin: "F138197752",
-        telephone: "0612345678",
+        cin: "WA276900",
+        telephone: "0624164940",
         motDePasse: "3620", // Plain text password
-        faculte: "École Nationale Supérieure d'Informatique",
+        faculte: "FSJ",
         genre: "M",
         sessions: {
           s1: "P",
@@ -43,7 +43,7 @@ const seedData = async () => {
         note: 18,
         eligible: true,
         lienCertificat:
-          "https://drive.google.com/file/d/1ABC123_F138197752/view?usp=sharing",
+          "https://drive.google.com/file/d/1E19LrmsLlMvYoQV2R4XMTHp8q4XBmSZg/view?usp=drive_link",
         qrCodeLink: generateQrCode(),
       },
       {
