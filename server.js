@@ -16,6 +16,7 @@ app.use(
     origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: false, // Cannot use credentials with '*'
   }),
 );
 //app.use(cors({
