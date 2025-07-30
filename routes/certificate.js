@@ -240,7 +240,7 @@ router.post("/mark-downloaded", verifyToken, async (req, res) => {
   try {
     const student = await Student.findById(req.studentId);
 
-    console.log(student)
+    console.log(student);
     if (!student) {
       return res.status(404).json({
         success: false,

@@ -7,10 +7,10 @@ const router = express.Router();
 // Login route with improved input handling
 router.post("/login", async (req, res) => {
   try {
-    const { nom, prenom, cin, motDePasse } = req.body;
+    const { nom, prenom, motDePasse } = req.body;
 
     // Validate input
-    if (!nom || !prenom || !cin || !motDePasse) {
+    if (!nom || !prenom || !motDePasse) {
       return res.status(400).json({
         success: false,
         message: "Tous les champs sont obligatoires",
@@ -22,7 +22,7 @@ router.post("/login", async (req, res) => {
     const student = await Student.findOne({
       nom: { $regex: new RegExp(`^${nom.trim()}$`, "i") }, // Case insensitive
       prenom: { $regex: new RegExp(`^${prenom.trim()}$`, "i") }, // Case insensitive
-      cin: { $regex: new RegExp(`^${cin.trim()}$`, "i") }, // Case insensitive
+      motDePasse: { $regex: new RegExp(`^${motDePasse.trim()}$`, "i") }, // Case insensitive
     });
 
     if (!student) {
@@ -32,13 +32,13 @@ router.post("/login", async (req, res) => {
       });
     }
 
-    // Check password - exact match (case sensitive)
-    if (motDePasse !== student.motDePasse) {
-      return res.status(401).json({
-        success: false,
-        message: "Code d'accès incorrect.",
-      });
-    }
+    //// Check password - exact match (case sensitive)
+    //if (motDePasse !== student.motDePasse) {
+    //  return res.status(401).json({
+    //    success: false,
+    //    message: "Code d'accès incorrect.",
+    //  });
+    //}
 
     // Generate JWT token (10 minutes expiry)
     const token = jwt.sign(
