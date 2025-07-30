@@ -1,180 +1,180 @@
 import mongoose from "mongoose";
-import Student from "../models/Student.js";
+import student from "../models/student.js";
 import dotenv from "dotenv";
 import { v4 as uuidv4 } from "uuid";
 
 dotenv.config();
 
-const generateQrCode = () => {
-  return `qr_${uuidv4().replace(/-/g, "")}_${Date.now()}`;
+const generateqrcode = () => {
+  return `qr_${uuidv4().replace(/-/g, "")}_${date.now()}`;
 };
 
-const seedData = async () => {
+const seeddata = async () => {
   try {
-    console.log("Connexion à MongoDB...");
+    console.log("connexion à mongodb...");
     await mongoose.connect(
-      process.env.MONGODB_URI ||
+      process.env.mongodb_uri ||
         "mongodb://localhost:27017/student-certificates",
     );
-    console.log("Connecté à MongoDB");
+    console.log("connecté à mongodb");
 
-    console.log("Suppression des données existantes...");
-    await Student.deleteMany({});
-    console.log("Données existantes supprimées");
+    console.log("suppression des données existantes...");
+    await student.deletemany({});
+    console.log("données existantes supprimées");
 
-    console.log("Création des données d'exemple...");
+    console.log("création des données d'exemple...");
 
-    // Sample students data with plain text passwords and gender
-    const studentsData = [
+    // sample students data with plain text passwords and gender
+    const studentsdata = [
       {
-        nom: "Saadaoui",
-        prenom: "Yahya",
+        nom: "saadaoui",
+        prenom: "yahya",
         email: "yahya.saadaoui@university.ma",
-        cin: "WA276900",
+        cin: "wa276900",
         telephone: "0624164940",
-        motDePasse: "3620", // Plain text password
-        faculte: "FSJ",
-        genre: "M",
+        motdepasse: "3620", // plain text password
+        faculte: "fsj",
+        genre: "m",
         sessions: {
-          s1: "P",
-          s2: "P",
-          s3: "P",
+          s1: "p",
+          s2: "p",
+          s3: "p",
         },
         note: 18,
         eligible: true,
-        lienCertificat:
-          "https://drive.google.com/file/d/1E19LrmsLlMvYoQV2R4XMTHp8q4XBmSZg/view?usp=drive_link",
-        qrCodeLink: generateQrCode(),
+        liencertificat:
+          "https://drive.google.com/file/d/1e19lrmsllmvyoqv2r4xmthp8q4xbmszg/view?usp=drive_link",
+        qrcodelink: generateqrcode(),
       },
       {
-        nom: "Alami",
-        prenom: "Ahmed",
+        nom: "alami",
+        prenom: "ahmed",
         email: "ahmed.alami@university.ma",
-        cin: "AB123456",
+        cin: "ab123456",
         telephone: "0612345678",
-        motDePasse: "secret123",
-        faculte: "Faculté des Sciences",
-        genre: "M",
+        motdepasse: "secret123",
+        faculte: "faculté des sciences",
+        genre: "m",
         sessions: {
-          s1: "P",
-          s2: "P",
-          s3: "P",
+          s1: "p",
+          s2: "p",
+          s3: "p",
         },
         note: 16,
         eligible: true,
-        lienCertificat:
-          "https://drive.google.com/file/d/1DEF456_AB123456/view?usp=sharing",
-        qrCodeLink: generateQrCode(),
+        liencertificat:
+          "https://drive.google.com/file/d/1def456_ab123456/view?usp=sharing",
+        qrcodelink: generateqrcode(),
       },
       {
-        nom: "Benali",
-        prenom: "Fatima",
+        nom: "benali",
+        prenom: "fatima",
         email: "fatima.benali@university.ma",
-        cin: "CD789012",
+        cin: "cd789012",
         telephone: "0623456789",
-        motDePasse: "password456",
-        faculte: "Faculté des Sciences Économiques",
-        genre: "F", // Female
+        motdepasse: "password456",
+        faculte: "faculté des sciences économiques",
+        genre: "f", // female
         sessions: {
-          s1: "P",
+          s1: "p",
           s2: "absent",
-          s3: "P",
+          s3: "p",
         },
         note: 8,
         eligible: false,
-        lienCertificat:
-          "https://drive.google.com/file/d/1GHI789_CD789012/view?usp=sharing",
-        qrCodeLink: generateQrCode(),
+        liencertificat:
+          "https://drive.google.com/file/d/1ghi789_cd789012/view?usp=sharing",
+        qrcodelink: generateqrcode(),
       },
       {
-        nom: "Chakir",
-        prenom: "Omar",
+        nom: "chakir",
+        prenom: "omar",
         email: "omar.chakir@university.ma",
-        cin: "EF345678",
+        cin: "ef345678",
         telephone: "0634567890",
-        motDePasse: "mypass789",
-        faculte: "Faculté de Médecine",
-        genre: "M",
+        motdepasse: "mypass789",
+        faculte: "faculté de médecine",
+        genre: "m",
         sessions: {
-          s1: "P",
-          s2: "P",
-          s3: "P",
+          s1: "p",
+          s2: "p",
+          s3: "p",
         },
         note: 14,
         eligible: true,
-        lienCertificat:
-          "https://drive.google.com/file/d/1JKL012_EF345678/view?usp=sharing",
-        qrCodeLink: generateQrCode(),
+        liencertificat:
+          "https://drive.google.com/file/d/1jkl012_ef345678/view?usp=sharing",
+        qrcodelink: generateqrcode(),
       },
       {
-        nom: "Idrissi",
-        prenom: "Aicha",
+        nom: "idrissi",
+        prenom: "aicha",
         email: "aicha.idrissi@university.ma",
-        cin: "GH901234",
+        cin: "gh901234",
         telephone: "0645678901",
-        motDePasse: "secure321",
-        faculte: "Faculté des Lettres",
-        genre: "F", // Female
+        motdepasse: "secure321",
+        faculte: "faculté des lettres",
+        genre: "f", // female
         sessions: {
           s1: "absent",
-          s2: "P",
+          s2: "p",
           s3: "absent",
         },
         note: 12,
         eligible: false,
-        lienCertificat:
-          "https://drive.google.com/file/d/1MNO345_GH901234/view?usp=sharing",
-        qrCodeLink: generateQrCode(),
+        liencertificat:
+          "https://drive.google.com/file/d/1mno345_gh901234/view?usp=sharing",
+        qrcodelink: generateqrcode(),
       },
       {
-        nom: "Tazi",
-        prenom: "Youssef",
+        nom: "tazi",
+        prenom: "youssef",
         email: "youssef.tazi@university.ma",
-        cin: "IJ567890",
+        cin: "ij567890",
         telephone: "0656789012",
-        motDePasse: "pass2024",
-        faculte: "École Nationale Supérieure d'Informatique",
-        genre: "M",
+        motdepasse: "pass2024",
+        faculte: "école nationale supérieure d'informatique",
+        genre: "m",
         sessions: {
-          s1: "P",
-          s2: "P",
-          s3: "P",
+          s1: "p",
+          s2: "p",
+          s3: "p",
         },
         note: 18,
         eligible: true,
-        lienCertificat:
-          "https://drive.google.com/file/d/1PQR678_IJ567890/view?usp=sharing",
-        qrCodeLink: generateQrCode(),
+        liencertificat:
+          "https://drive.google.com/file/d/1pqr678_ij567890/view?usp=sharing",
+        qrcodelink: generateqrcode(),
       },
       {
-        nom: "Mansouri",
-        prenom: "Khadija",
+        nom: "mansouri",
+        prenom: "khadija",
         email: "khadija.mansouri@university.ma",
-        cin: "KL234567",
+        cin: "kl234567",
         telephone: "0667890123",
-        motDePasse: "test123",
-        faculte: "Faculté de Droit",
-        genre: "F", // Female
+        motdepasse: "test123",
+        faculte: "faculté de droit",
+        genre: "f", // female
         sessions: {
-          s1: "P",
-          s2: "P",
+          s1: "p",
+          s2: "p",
           s3: "absent",
         },
         note: 15,
         eligible: false,
-        lienCertificat:
-          "https://drive.google.com/file/d/1STU901_KL234567/view?usp=sharing",
-        qrCodeLink: generateQrCode(),
+        liencertificat:
+          "https://drive.google.com/file/d/1stu901_kl234567/view?usp=sharing",
+        qrcodelink: generateqrcode(),
       },
     ];
 
-    console.log("Insertion des données d'exemple...");
-    await Student.insertMany(studentsData);
-    console.log("Données d'exemple créées avec succès");
+    console.log("insertion des données d'exemple...");
+    await student.insertmany(studentsdata);
+    console.log("données d'exemple créées avec succès");
 
-    // Display login credentials
+    // display login credentials
     console.log("\n" + "=".repeat(60));
-    console.log("IDENTIFIANTS DE CONNEXION POUR LES TESTS");
+    console.log("identifiants de connexion pour les tests");
     console.log("=".repeat(60));
 
     const passwords = [
@@ -187,50 +187,50 @@ const seedData = async () => {
       "test123",
     ];
 
-    studentsData.forEach((student, index) => {
-      const sessionsCount = [
+    studentsdata.foreach((student, index) => {
+      const sessionscount = [
         student.sessions.s1,
         student.sessions.s2,
         student.sessions.s3,
-      ].filter((s) => s === "P").length;
+      ].filter((s) => s === "p").length;
 
-      console.log(`\nÉtudiant ${index + 1}:`);
-      console.log(`   Nom: ${student.nom}`);
-      console.log(`   Prénom: ${student.prenom}`);
-      console.log(`   CIN: ${student.cin}`);
-      console.log(`   Mot de passe: ${passwords[index]}`);
-      console.log(`   Genre: ${student.genre}`);
-      console.log(`   Note: ${student.note}/20`);
-      console.log(`   Sessions: ${sessionsCount}/3`);
-      console.log(`   Éligible: ${student.eligible ? "Oui" : "Non"}`);
-      console.log(`   QR Code: ${student.qrCodeLink}`);
-      console.log(`   Faculté: ${student.faculte}`);
+      console.log(`\nétudiant ${index + 1}:`);
+      console.log(`   nom: ${student.nom}`);
+      console.log(`   prénom: ${student.prenom}`);
+      console.log(`   cin: ${student.cin}`);
+      console.log(`   mot de passe: ${passwords[index]}`);
+      console.log(`   genre: ${student.genre}`);
+      console.log(`   note: ${student.note}/20`);
+      console.log(`   sessions: ${sessionscount}/3`);
+      console.log(`   éligible: ${student.eligible ? "oui" : "non"}`);
+      console.log(`   qr code: ${student.qrcodelink}`);
+      console.log(`   faculté: ${student.faculte}`);
     });
 
     console.log("\n" + "=".repeat(60));
-    console.log("RÉSUMÉ DES DONNÉES");
+    console.log("résumé des données");
     console.log("=".repeat(60));
-    console.log(`Total étudiants: ${studentsData.length}`);
+    console.log(`total étudiants: ${studentsdata.length}`);
     console.log(
-      `Étudiants éligibles: ${studentsData.filter((s) => s.eligible).length}`,
+      `étudiants éligibles: ${studentsdata.filter((s) => s.eligible).length}`,
     );
     console.log(
-      `Étudiants avec note ≥ 10: ${studentsData.filter((s) => s.note >= 10).length}`,
+      `étudiants avec note ≥ 10: ${studentsdata.filter((s) => s.note >= 10).length}`,
     );
 
-    console.log("\nBASE DE DONNÉES INITIALISÉE AVEC SUCCÈS!");
-    console.log("Vous pouvez maintenant démarrer le serveur avec: npm run dev");
+    console.log("\nbase de données initialisée avec succès!");
+    console.log("vous pouvez maintenant démarrer le serveur avec: npm run dev");
   } catch (error) {
     console.error(
-      "Erreur lors de l'initialisation de la base de données:",
+      "erreur lors de l'initialisation de la base de données:",
       error,
     );
     process.exit(1);
   } finally {
     await mongoose.disconnect();
-    console.log("Déconnecté de MongoDB");
+    console.log("déconnecté de mongodb");
     process.exit(0);
   }
 };
 
-seedData();
+seeddata();
